@@ -1,0 +1,53 @@
+// WP admin hide and show
+
+#wpadminbar {
+  transition: all 0.4s ease;
+  &.hide {
+  	transform: translate(0, -46px);
+  	@media only screen and (min-width: 783px) {
+    	transform: translate(0, -32px);
+    }
+  }
+}
+#admin-trigger {
+	text-decoration: none;
+	position: fixed;
+	top: 0;
+	right: 0;
+	z-index: 101;
+	transition: all .4s ease;
+	&:hover {
+		opacity: 1;
+	}
+	&:after {
+		background: #333;
+		color: #fff;
+		font-size: 20px;
+		display: block;
+		line-height: 100%;
+		padding: 5px 0 10px;
+		width: 35px;
+		z-index: 2000;
+		transition: all .4s ease;
+		content: "+";
+		text-align: center;
+	}
+	&.down {
+		&:after {
+			padding: 6px 0 9px;
+			transform: translate(0, 46px);
+			content: "-";
+			@media only screen and (min-width: 783px) {
+				transform: translate(0, 32px);
+			}
+		}
+	}
+}
+// Hides the "most used" tab on the format taxonomy options
+#format-tabs {
+	li {
+		&:last-child {
+			display: none;
+		}
+	}
+}

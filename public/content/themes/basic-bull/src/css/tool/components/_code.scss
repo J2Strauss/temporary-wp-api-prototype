@@ -1,0 +1,16 @@
+/*==============================================================
+# Code
+==============================================================*/
+
+.code-component {
+    .code-sample {
+        pre {
+            max-height: 400px;
+            overflow-y: scroll;
+        }
+    }
+    .code-instructions {
+        padding: 20px;
+        font-size: .85em;
+    }
+}

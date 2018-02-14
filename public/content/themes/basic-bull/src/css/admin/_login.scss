@@ -1,0 +1,12 @@
+body.login #login h1 a {
+	background: url('../img/logos/client-logo.svg') no-repeat scroll center top transparent;
+	background-size: cover;
+    height: 150px;
+    width: 300px;
+}
+body.login {
+	background: white;
+}
+body.login #login {
+	    padding: 10% 0 0;
+}

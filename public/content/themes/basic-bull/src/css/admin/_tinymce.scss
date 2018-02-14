@@ -1,0 +1,47 @@
+#tinymce {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
+	h1, h2, h3, h4, h5, h6, .serif {
+		font-family: Georgia, "Times New Roman", "Bitstream Charter", Times, serif !important;
+	}
+	.sans-serif {
+		font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
+	}
+	.button-label {
+		background: black;
+		color: white;
+		padding: 8px 12px;
+	}
+	.lower-roman-list {
+		list-style: lower-roman;
+	}
+	.upper-roman-list {
+		list-style: upper-roman;
+	}
+	.lower-alpha-list {
+		list-style: lower-alpha;
+	}
+	.upper-alpha-list {
+		list-style: upper-alpha;
+	}
+	.square-list {
+		list-style: square;
+	}
+	.circle-list {
+		list-style: circle;
+	}
+}
+ 
+/* Layout dropdown */
+
+.mce-text {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
+}
+.mce-menu-item-expand > .mce-text {
+	font-size: 16px !important;
+}
+.mce-menu:not(.mce-menu-sub) {
+	.mce-text {
+		font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
+		/*font-size: 16px !important;*/
+	}
+}

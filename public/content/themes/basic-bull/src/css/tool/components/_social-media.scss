@@ -1,0 +1,33 @@
+/*==============================================================
+# Social media
+==============================================================*/
+
+.social-link {
+	display: inline-block;
+	color: $grayDark;
+	svg {
+		display: block;
+		float: left;
+		width: 45px;
+		height: 45px;
+		padding: 5px;
+	}
+}
+
+.site-social-links {
+	width: 100%;
+	.social-link-container {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: center;
+		text-align: center;
+		font-size: 0
+	}
+	.social-link {
+		background: $gray;
+		flex: 1 1 auto;
+		.icon {
+			display: inline-block;
+		}
+	}
+}

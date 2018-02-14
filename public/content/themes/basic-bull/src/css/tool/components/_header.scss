@@ -1,0 +1,81 @@
+/*==============================================================
+# Header
+==============================================================*/
+
+/*--------------------------------------------------------------
+# Sites header
+--------------------------------------------------------------*/
+
+.site-header {
+	background: $black;
+	box-shadow: 0px 1px 0 0 $grey;
+	padding: 20px 30px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	z-index: 10;
+	overflow: scroll;
+    // transform: translateX(-75%);
+	transition: all 0.5s $cbTrans;
+	&.header-unpinned {
+		padding: 0;
+	}
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+    .fixed-header-left &,
+    .fixed-header-right & {
+        width: 300px;
+        max-width: 100%;
+        height: 100%;
+        max-height: 100vh;
+        top: 0;
+        .site-header-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+        }
+        .site-branding,
+        .site-search,
+        .site-utilities {
+            flex-shrink: 0;
+        }
+        .main-navigation {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 10px 0;
+        }
+        .site-branding {
+            padding: 10px 0 20px;
+            margin: 0 0 10px;
+        }
+        .site-navigation {
+            opacity: 1;
+            transition: all 0.5s $cbTrans;
+        }
+    }
+    .fixed-header-left & {
+        left: 0;
+        /*box-shadow: 5px 0px 0px 0px $black;*/
+    }
+	.open-navigation & {
+		transform: translateX(0%);
+        .site-navigation {
+            /*opacity: 0;*/
+        }
+	}
+}
+
+/*--------------------------------------------------------------
+# Sites branding
+--------------------------------------------------------------*/
+
+.site-branding {
+	overflow: hidden;
+	transition: all 0.5s $cbTrans;
+}

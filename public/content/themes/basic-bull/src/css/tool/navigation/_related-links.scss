@@ -1,0 +1,32 @@
+/*==============================================================
+# Related links
+==============================================================*/
+
+
+.related-links {
+	margin: 20px 0 40px;
+	h6 {
+		margin: 10px 0 15px;
+	}
+    ul {
+    	margin: 0;
+    	padding: 0;
+        list-style: none;
+        li {
+        	/*display: inline-block;*/
+        }
+    }
+    a {
+    	display: inline-block;
+    	border-bottom: 1px solid $mid-gray;
+		color: $mid-gray;
+		padding: 5px 0px;
+		transition: all 0.3s $cbTrans;
+		&:hover {
+			background-color: $light-gray;
+			border-color: $light-gray;
+			color: $brand-charcoal;
+			padding: 5px 10px;
+		}
+    }
+}

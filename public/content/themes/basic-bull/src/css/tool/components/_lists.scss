@@ -1,0 +1,46 @@
+/*==============================================================
+# Lists
+==============================================================*/
+
+ul,
+ol {
+	margin: 0 0 1.5em 3em;
+	li {
+		margin:  0 0 8px;
+	}
+}
+
+ul {
+	list-style: disc;
+}
+
+ol {
+	list-style: decimal;
+}
+
+li > ul,
+li > ol {
+	margin-bottom: 1.5em;
+}
+ol {
+	&.lower-roman-list {
+		list-style: lower-roman;
+	}
+	&.upper-roman-list {
+		list-style: upper-roman;
+	}
+	&.lower-alpha-list {
+		list-style: lower-alpha;
+	}
+	&.upper-alpha-list {
+		list-style: upper-alpha;
+	}
+}
+ul {
+	&.square-list {
+		list-style: square;
+	}
+	&.circle-list {
+		list-style: circle;
+	}
+}

@@ -1,0 +1,122 @@
+{
+    "key": "group_5a15b21dcbcce",
+    "title": "Code Sample",
+    "fields": [
+        {
+            "key": "field_5a15b4e9390cf",
+            "label": "Code Label",
+            "name": "code_label",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5a15b275f2e22",
+            "label": "Code Syntax",
+            "name": "code_syntax",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "language-markup": "Markup",
+                "language-css": "CSS",
+                "language-javascript": "JavaScript",
+                "language-apacheconf": "Apache Configuration",
+                "language-bash": "Bash",
+                "language-git": "Git",
+                "language-handlebars": "Handlebars",
+                "language-json": "JSON",
+                "language-markdown": "Markdown",
+                "language-php": "PHP",
+                "language-sass": "Sass (Sass)",
+                "language-scss": "Sass (Scss)",
+                "language-sql": "SQL",
+                "language-twig": "Twig",
+                "language-vim": "vim",
+                "language-wiki": "Wiki markup"
+            },
+            "default_value": [
+                "language-markup"
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 1,
+            "ajax": 0,
+            "return_format": "value",
+            "placeholder": ""
+        },
+        {
+            "key": "field_5a1dc3e00acbd",
+            "label": "Code Snippet",
+            "name": "code_snippet",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_5a15b54f48827",
+            "label": "Code Instructions",
+            "name": "code_instructions",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1511900138
+}

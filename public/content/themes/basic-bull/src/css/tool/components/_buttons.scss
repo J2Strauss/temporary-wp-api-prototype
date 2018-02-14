@@ -1,0 +1,59 @@
+/*==============================================================
+# Buttons
+==============================================================*/
+
+.button, 
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	font-size: 12.8px;
+	font-weight: 400;
+	letter-spacing: 3px;
+	text-transform: uppercase;
+	border: 1px solid;
+	display: inline-block;
+	padding: 8px 12px;
+	background-color: $buttonBackground;
+	color: $buttonColor;
+	cursor: pointer;
+	transition: all .3s $cbTrans;
+	text-decoration: none;
+	appearance: none;
+	border-radius: 0;
+	&:hover {
+		background-color: $white;
+		border-color: $buttonBackground;
+		color: $buttonBackground;
+	}
+	&.white-button {
+		background-color: $white;
+    	color: $buttonBackground;
+    	&:hover {
+    		background-color: $buttonBackground;
+    		color: $white;
+    	}
+	}
+	&.button-label {
+		margin: 10px 0 20px;
+		&.inactive-button {
+			cursor: default;
+			border: none;
+			&:hover {
+	    		background-color: $buttonBackground;
+	    		color: $white;
+	    	}
+	    }
+	}
+}
+
+button:focus,
+input[type="button"]:focus,
+input[type="reset"]:focus,
+input[type="submit"]:focus,
+button:active,
+input[type="button"]:active,
+input[type="reset"]:active,
+input[type="submit"]:active {
+
+}

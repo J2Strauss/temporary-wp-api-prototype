@@ -1,0 +1,142 @@
+/*==============================================================
+# Tables
+==============================================================*/
+
+.table-component {
+    padding: 20px 20px 60px;
+    float: left;
+    width: 100%;
+}
+table {
+	border: 0;
+	width: 100%;
+	@include breakFirst(medium) {
+		border-collapse: collapse;
+		margin: 0;
+		padding: 0;
+		width: 100%;
+	}
+	caption {
+		font-size: 1.3em;
+		@include breakFirst(medium) {
+	  		font-size: 1.5em;
+	  		margin: .5em 0 .75em;
+	  	}
+	}
+	tr {
+		border-bottom: 1px solid $grey;
+		display: table-row;
+	}
+	thead {
+		font-weight: bold;
+	}
+	th,
+	td {
+		padding: .625em;
+		display: table-cell;
+		text-align: center;
+		font-size: 1em;
+	}
+}
+.collapsible-table {
+	tr {
+		width: 100%;
+		background: $white;
+		border: 1px solid $grey;
+		padding: 0 .35em;
+		display: block;
+		margin-bottom: .625em;
+		@include breakFirst(medium) {
+			border-bottom: 1px solid $grey;
+			display: table-row;
+		}
+	}
+	th,
+	td {
+		display: block;
+		padding: .625em;
+		text-align: right;
+		font-size: .8em;
+		@include breakFirst(medium) {
+			display: table-cell;
+			text-align: center;
+			font-size: 1em;
+			border-bottom: none;
+		}
+		&:before {
+			content: attr(data-label);
+			float: left;
+			font-weight: bold;
+			@include breakFirst(medium) {
+				display: none;
+			}
+		}
+	}
+	td {	
+		&:last-child {
+			border-bottom: none;
+		}
+	}
+	@include break(small) {
+		table thead {
+			border: none;
+			clip: rect(0 0 0 0);
+			height: 1px;
+			margin: -1px;
+			overflow: hidden;
+			padding: 0;
+			position: absolute;
+			width: 1px;
+		}
+	}
+}
+.scrollable-table {
+	float: left;
+	width: 100%;
+	overflow: scroll;
+	max-height: 200px;
+	border: 1px solid $grey;
+	tbody {
+		height: 100px;
+	}
+	thead {
+		tr {
+			position: relative;
+    		background: $white;
+		}
+	}
+	tr {
+		border-left: none;
+		border-bottom: 1px solid $grey;
+		border-top: none;
+		border-right: none;
+		background: $white;
+		th:last-child,
+		td:last-child {
+			border-right: none;
+		}
+	}
+	&.scroll-x {
+		th:first-child {
+    		position: relative;
+    		background: $white;
+    		box-shadow: 1px 0px 0px 0px $grey;
+		}
+	}
+	tbody {
+		tr {
+			&:last-child {
+				border-bottom: none;
+			}
+		}
+	}
+	th,
+	td {
+		display: table-cell;
+		text-align: center;
+		font-size: 1em;
+		border-bottom: none;
+		min-width: 190px;
+		border-right: 1px solid $grey;
+	}
+}

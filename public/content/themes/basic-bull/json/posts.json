@@ -1,0 +1,138 @@
+{
+
+	"posts" : [
+	    {
+			"id": 2596,
+			"date": "2018-02-14T14:52:50",
+			"status": "publish",
+			"type": "music",
+			"title": {
+				"rendered": "Musicianship"
+			},
+			"music_program": [
+				51
+			],
+			"instrument": [
+				52
+			],
+			"location": [
+				14,
+				9
+			],
+			"skill_level": [
+				18
+			],
+			"age_range": [
+				16
+			],
+			"acf": {
+				"description_long_form": "<p>Essential to music instruction, musicianship offers theory and ear training at all levels. Students receive a comprehensive education in the fundamentals that includes notation, scales, intervals, triads, music terminology transposition, harmony and counterpoint which assists them in all of their musical studies.</p>\n",
+				"description_short_form": "Essential to music instruction, musicianship offers theory and ear training at all levels.",
+				"age_range": {
+					"age_range_start": "9",
+					"age_range_end": "18"
+				},
+				"financial_aid": true,
+				"tuitions": [
+					{
+						"tuition_value": "250",
+						"tuition_criteria": "For students also enrolled in individual instruction or additional classes."
+					},
+					{
+						"tuition_value": "125",
+						"tuition_criteria": "For all other scenarios."
+					}
+				]
+			}
+		},
+	 	{
+			"id": 264,
+			"date": "2018-02-14T14:52:50",
+			"status": "publish",
+			"type": "music",
+			"title": {
+				"rendered": "YO DOPE COOL DUDE ROCK ON"
+			},
+			"music_program": [
+				51
+			],
+			"instrument": [
+				52
+			],
+			"location": [
+				12,
+				10,
+				13
+			],
+			"skill_level": [
+				20
+			],
+			"age_range": [
+				16
+			],
+			"acf": {
+				"description_long_form": "<p>Essential to music instruction, musicianship offers theory and ear training at all levels. Students receive a comprehensive education in the fundamentals that includes notation, scales, intervals, triads, music terminology transposition, harmony and counterpoint which assists them in all of their musical studies.</p>\n",
+				"description_short_form": "Essential to music instruction, musicianship offers theory and ear training at all levels.",
+				"age_range": {
+					"age_range_start": "9",
+					"age_range_end": "18"
+				},
+				"financial_aid": false,
+				"tuitions": [
+					{
+						"tuition_value": "250",
+						"tuition_criteria": "For students also enrolled in individual instruction or additional classes."
+					},
+					{
+						"tuition_value": "125",
+						"tuition_criteria": "For all other scenarios."
+					}
+				]
+			}
+		},
+		{
+			"id": 201932,
+			"date": "2018-02-14T14:52:50",
+			"status": "draft",
+			"type": "music",
+			"title": {
+				"rendered": "Lets go and create a new music post"
+			},
+			"music_program": [
+				
+			],
+			"instrument": [
+			],
+			"location": [
+				9,
+				13
+			],
+			"skill_level": [
+				20
+			],
+			"age_range": [
+				17
+			],
+			"acf": {
+				"description_long_form": "<p>Essential to music instruction, musicianship offers theory and ear training at all levels. Students receive a comprehensive education in the fundamentals that includes notation, scales, intervals, triads, music terminology transposition, harmony and counterpoint which assists them in all of their musical studies.</p>\n",
+				"description_short_form": "Essential to music instruction, musicianship offers theory and ear training at all levels.",
+				"age_range": {
+					"age_range_start": "30",
+					"age_range_end": "69"
+				},
+				"financial_aid": true,
+				"tuitions": [
+					{
+						"tuition_value": "250",
+						"tuition_criteria": "For students also enrolled in individual instruction or additional classes."
+					},
+					{
+						"tuition_value": "125",
+						"tuition_criteria": "For all other scenarios."
+					}
+				]
+			}
+		}
+	]
+
+}

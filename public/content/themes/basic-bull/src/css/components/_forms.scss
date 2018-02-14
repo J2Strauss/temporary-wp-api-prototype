@@ -1,0 +1,125 @@
+/*==============================================================
+# Forms
+==============================================================*/
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	border: none;
+	border-radius: 0px;
+	background: $buttonBackground;
+	color: $buttonColor;
+	line-height: 1;
+	padding: .6em 1em .4em;
+	appearance: none;
+}
+
+button:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+input[type="submit"]:hover {
+	background: $buttonBackgroundHover;
+}
+
+button:focus,
+input[type="button"]:focus,
+input[type="reset"]:focus,
+input[type="submit"]:focus,
+button:active,
+input[type="button"]:active,
+input[type="reset"]:active,
+input[type="submit"]:active {
+
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"],
+textarea {
+	color: #666;
+	border: 1px solid $grayLight;
+	border-radius: 0px;
+	padding: 3px;
+}
+
+select {
+	border: 1px solid $grayLight;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus,
+input[type="range"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="week"]:focus,
+input[type="time"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="color"]:focus,
+textarea:focus {
+	color: #111;
+	outline: none;
+}
+
+textarea {
+	width: 100%;
+}
+
+// Site search form
+// --------------------------------------------------
+
+.site-search {
+	form {
+		width: 100%;
+		display: table;
+	}
+	.input-wrapper {
+		position: relative;
+		input[type="search"] {
+			padding: 10px 60px 10px 10px ;
+			width: 100%;
+		}
+		input[type="submit"] {
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			height: 100%;
+			padding: 0;
+			width: 50px;
+			background-color: transparent;
+			border-left: 1px solid $grayLight;
+			z-index: 2;
+		}
+		.button-icon {
+			position: absolute;
+			top: 50%;
+			right: 10px;
+			z-index: 1;
+			@include translate(0, -50%);
+			svg {
+				display: inline-block;
+				max-height: 30px;
+				max-width: 30px;
+				float: left;
+			}
+		}
+	}
+}

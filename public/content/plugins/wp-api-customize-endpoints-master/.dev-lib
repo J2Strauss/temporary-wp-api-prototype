@@ -1,0 +1,2 @@
+CHECK_SCOPE=changed-files
+WPCS_BRANCH=develop
