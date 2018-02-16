@@ -25,7 +25,7 @@
 
 		<?php
 			
-			$request = wp_remote_get( 'http://staging.j2made.com/json/posts.json' );
+			$request = wp_remote_get( 'http://my.smsmusic.org/20180216sampleA.json' );
 			
 			if( is_wp_error( $request ) ) {
 
@@ -130,9 +130,15 @@
 
 				else :
 
-					echo $postId;
+					?> 
 
-					echo 'These dont exist';
+					<div>
+
+						<h5>Post ID - <?php echo $postId; ?> - Doesn't exist just yet></h5>
+
+					</div>
+
+					<?php 
 
 					$createArg = array(
 						'import_id'			=> $postId,
@@ -143,7 +149,11 @@
 						
 					);
 
+					// Creates standard post content
+
 					wp_insert_post($createArg, true); 
+
+					// Assign custom taxonomies
 
 					wp_set_post_terms( $postId, $postCategories, 'music_program', false);
 					wp_set_post_terms( $postId, $postCategories, 'instrument', false);
@@ -151,7 +161,33 @@
 					wp_set_post_terms( $postId, $postCategories, 'skill_level', false);
 					wp_set_post_terms( $postId, $postCategories, 'age_range', false);
 
-					update_field( 'age_range_age_start', 'Yes', $postId);
+					// Updates ACF fields
+
+					// Course description long form
+					$field_key = "field_5a834c4b1a5ab";
+					$value = $postDescription;
+					update_field( $field_key, $value, $postId );
+
+					// Course description short form (excerpt)
+					$field_key = "field_5a834c891a5ac";
+					$value = $postExcerpt;
+					update_field( $field_key, $value, $postId );
+
+
+					// Course financial aid
+					$field_key = "field_5a834e2356e38";
+					$value = $postFinancialAid;
+					update_field( $field_key, $value, $postId );
+
+					// Age range start
+				 	$field_key = "age_range_age_start";
+				 	$value = $postAgeStart;
+					update_field( $field_key, $value, $postId );
+
+					// Age range end
+					$field_key = "age_range_age_end";
+				 	$value = $postAgeEnd;
+					update_field( $field_key, $value, $postId );
 
 				endif;
 

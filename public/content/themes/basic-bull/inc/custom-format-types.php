@@ -51,7 +51,7 @@ if ( ! function_exists( 'basic_bull_custom_formats' ) ) {
 			);
 			
 			// Register the new 'format' taxonomy
-			register_taxonomy( 'format', array( 'custom_post' ), $args ); 
+			register_taxonomy( 'format', array( 'music' ), $args ); 
 
 		}
 
