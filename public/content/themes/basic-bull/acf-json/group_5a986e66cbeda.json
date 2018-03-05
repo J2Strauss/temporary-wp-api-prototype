@@ -1,0 +1,314 @@
+{
+    "key": "group_5a986e66cbeda",
+    "title": "General Section",
+    "fields": [
+        {
+            "key": "field_5a986e9c3dd9a",
+            "label": "Section Content",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5a986eb73dd9c",
+            "label": "Copy",
+            "name": "copy",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_5a986ee53dd9d",
+            "label": "Section Styles",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5a986f003dd9e",
+            "label": "Background Type",
+            "name": "background_type",
+            "type": "button_group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "background-none": "None",
+                "background-color": "Color",
+                "background-image": "Image",
+                "background-video": "Video"
+            },
+            "allow_null": 0,
+            "default_value": "",
+            "layout": "horizontal",
+            "return_format": "value"
+        },
+        {
+            "key": "field_5a9870e72381c",
+            "label": "Video Source",
+            "name": "background_video_source",
+            "type": "button_group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5a986f003dd9e",
+                        "operator": "==",
+                        "value": "background-video"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "youtube": "YouTube",
+                "vimeo": "Vimeo",
+                "upload": "File Upload"
+            },
+            "allow_null": 0,
+            "default_value": "",
+            "layout": "horizontal",
+            "return_format": "value"
+        },
+        {
+            "key": "field_5a98712b2381d",
+            "label": "Video URL",
+            "name": "background_video_embed",
+            "type": "oembed",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5a986f003dd9e",
+                        "operator": "==",
+                        "value": "background-video"
+                    },
+                    {
+                        "field": "field_5a9870e72381c",
+                        "operator": "!=",
+                        "value": "upload"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "width": "",
+            "height": ""
+        },
+        {
+            "key": "field_5a9871ac2381e",
+            "label": "Video File",
+            "name": "background_video_file",
+            "type": "file",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5a986f003dd9e",
+                        "operator": "==",
+                        "value": "background-video"
+                    },
+                    {
+                        "field": "field_5a9870e72381c",
+                        "operator": "==",
+                        "value": "upload"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5a98720023824",
+            "label": "Image",
+            "name": "background_image",
+            "type": "image",
+            "instructions": "<small>When using a video file as a background, this will be used as a \"poster\" or preview image while the video loads.<\/small>",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5a986f003dd9e",
+                        "operator": "!=",
+                        "value": "background-none"
+                    },
+                    {
+                        "field": "field_5a986f003dd9e",
+                        "operator": "!=",
+                        "value": "background-color"
+                    },
+                    {
+                        "field": "field_5a9870e72381c",
+                        "operator": "!=",
+                        "value": "youtube"
+                    },
+                    {
+                        "field": "field_5a9870e72381c",
+                        "operator": "!=",
+                        "value": "vimeo"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_5a986f003dd9e",
+                        "operator": "==",
+                        "value": "background-image"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5a98734b8bb04",
+            "label": "Overlay",
+            "name": "background_overlay",
+            "type": "true_false",
+            "instructions": "Would you like to enable a overlay?",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5a986f003dd9e",
+                        "operator": "!=",
+                        "value": "background-color"
+                    },
+                    {
+                        "field": "field_5a986f003dd9e",
+                        "operator": "!=",
+                        "value": "background-none"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5a98731e8bb03",
+            "label": "Color",
+            "name": "background_color",
+            "type": "color_picker",
+            "instructions": "<small>When the overlay is enabled, this is the base color used to tint the overlay.<\/small>",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5a986f003dd9e",
+                        "operator": "==",
+                        "value": "background-color"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_5a986f003dd9e",
+                        "operator": "!=",
+                        "value": "background-none"
+                    },
+                    {
+                        "field": "field_5a98734b8bb04",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#ff595e"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content"
+    ],
+    "active": 1,
+    "description": "",
+    "modified": 1520009759
+}

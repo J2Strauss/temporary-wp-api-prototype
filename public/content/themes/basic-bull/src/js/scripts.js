@@ -3,7 +3,6 @@ $(document).ready(function(){
 	// Remove loading class
 	$('body').removeClass('loading');
 
-	console.log('cool')
 
 	// Syntax highlighter on load
 	prism();
@@ -22,6 +21,14 @@ $(document).ready(function(){
             $(this).addClass( 'admin-link' );
         }
     });
+	
+	var tag = document.createElement('script');
+	tag.src = "https://www.youtube.com/iframe_api";
+	var firstScriptTag = document.getElementsByTagName('script')[0];
+	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+   
+	
 
 	// Barba.Pjax.originalPreventCheck = Barba.Pjax.preventCheck;
 
@@ -73,3 +80,49 @@ $(document).ready(function(){
 	// });
 	
 });
+
+function onYouTubeIframeAPIReady() {
+    
+    var players = document.querySelectorAll('.embed-background .background-video');
+    
+    for (var i = 0; i < players.length; i++) {
+        new YT.Player(players[i], {
+        	videoId: players[i].dataset.id,
+            playerVars: {
+            	'autoplay': 1,
+				'controls': 0,
+				'modestbranding': 1,
+				'loop': 1,
+				'showinfo': 0,
+				'cc_load_policy': 0,
+				'iv_load_policy': 3,
+				'autohide': 0,
+				'rel': 0,
+				'playsinline': 1,
+				'enablejsapi': 1,
+				'playlist': players[i].dataset.id,
+            },
+			events: {
+				'onReady' : onPlayerReady
+			}
+        });
+
+        function onPlayerReady(e) {
+		    e.target.mute();
+		   $(e.target.getIframe()).css({
+		  //   	"min-width": "100%",
+				// "position": "absolute",
+				// "padding-bottom" : "56%",
+				// "top": "50%",
+				// "left": "50%",
+				// "transform": "translate(-50%, -50%)",
+		    })
+		    $('.background-component').addClass('playing-video');
+		   
+		}
+
+    }
+
+     
+
+}

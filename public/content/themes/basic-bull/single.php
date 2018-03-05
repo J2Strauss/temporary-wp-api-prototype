@@ -10,26 +10,32 @@
 get_header(); ?>
 
 	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+		
+		<div id="main" class="site-main" role="main">
 
-		<?php
-		while ( have_posts() ) : the_post();
+		<?php while ( have_posts() ) : the_post(); ?>
 
-			get_template_part( 'template-parts/content', get_post_format() );
+			<?php the_title(); ?>
 
-			the_post_navigation();
+			<div class="section">
+				
+				<div class="content-component">
+					
+					<h1>This is a section heading and has stuff</h1>
+					<p>The stuff I was talking about in the heading above are the words you are currently reading...Baboozled again.</p>
 
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
+				</div>
+				
+				<?php get_template_part( 'template-parts/components/media/video', 'backgrounds' );  ?>
 
-		endwhile; // End of the loop.
-		?>
+			</div>
+		
+		<?php endwhile;  ?>
 
-		</main><!-- #main -->
+		</div><!-- #main -->
+
 	</div><!-- #primary -->
 
-<?php
-get_sidebar();
-get_footer();
+<?php get_sidebar(); ?>
+
+<?php get_footer(); ?>
