@@ -196,6 +196,28 @@ Based off of: https://code.tutsplus.com/articles/custom-post-type-helper-class--
 
 	}
 
+	$events = new Custom_Post_Type( 'event' ,
+		[
+			'menu_icon' => 'dashicons-calendar',
+			'has_archive' => true,
+			'publicly_queryable' => true,
+			'hierarchical' => true,
+			'show_in_rest'       => true,
+			'rest_base'          => 'events',
+			'rest_controller_class' => 'WP_REST_Posts_Controller',
+		], 
+		[
+			// 'name' => 'Events', 
+			// 'singular_name' => 'Custom Single Name',
+			// 'all_items' => 'All Events', 
+			// 'add_new' => 'Add Event', 
+			// 'add_new_item' => 'Add Event',
+			// 'edit_item' => 'Edit Custom Name', 
+			// 'view' => 'View Custom Name', 
+			// 'view_item' => 'View Custom Name'
+		]
+	);
+
 	$music = new Custom_Post_Type( 'music' ,
 		[
 			'menu_icon' => 'dashicons-format-audio',

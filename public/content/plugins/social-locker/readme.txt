@@ -3,7 +3,7 @@ Contributors: OnePressMedia
 Donate link: http://onepress-media.com/portfolio
 Tags:content locker, locker, like locker, pay with a tweet, pay with a like, share to unlock, like to unlock, facebook, twitter, google, google+, google plus, linkedin, email, e-mail, emails, subscribe, optin, opt-in, optins, subscribers, subscription, email marketing, marketing, smo, seo, social network, traffic, social, social traffic, social networking, social plugins, mashable, social media pop-up, social media widget, social media sharing, social media networks, social sharing, social sharing optimization, share button, share buttons, facebook share, facebook share button, linkedin share, linkedin share button, twitter share, twitter share button, twitter follow, twitter follow button, tweet, tweeting, social share, social buttons, social share buttons, Share, Share this, simple social buttons, simple share buttons adder, digg, stumble upon, analytics, buddypress, button, facebook like, facebook recommend, facebook share, facebook share button, floating buttons, follow, lock video, youtube, lock video youtube, unlock video, unlock video youtube, video, video social, video viral, viral plugin, viral video, viral traffic
 Requires at least: 3.2
-Tested up to: 4.9.1
+Tested up to: 4.9.4
 Stable tag: trunk
 License: GPLv2
 
@@ -146,13 +146,19 @@ For example, you can set an URL to like for your Facebook Page (in order to send
 
 == Changelog ==
 
+<strong>v.5.0.8 - 6 Mar 2018</strong><br />
+<ul>
+<li>FIXED: The issue of auto unlocks for lockers containing the Facebook Like button.</li>
+<li>FIXED: The issue of counting stats data.</li>
+</ul>
+
+<p><strong>Important:</strong> if you use CDN, please purge your CDN after installation of this update.</p>
+
 <strong>v.5.0.7 - 21 Jan 2018</strong><br />
 <ul>
 <li>IMPROVED: Facebook Share button (works better on mobile).</li>
 <li>IMPROVED: Facebook Like button (includes support for the confirmation dialog).</li>
 </ul>
-
-<p><strong>Important:</strong> if you use CDN, please purge your CDN after installation of this update.</p>
 
 <strong>v.5.0.5 - 19 Jan 2018</strong><br />
 <ul>

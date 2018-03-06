@@ -3,7 +3,8 @@ Contributors: ithemes, chrisjean, gerroald, mattdanner, timothyblynjacobs
 Tags: security, security plugin, malware, hack, secure, block, SSL, admin, htaccess, lockdown, login, protect, protection, anti virus, attack, injection, login security, maintenance, permissions, prevention, authentication, administration, password, brute force, ban, permissions, bots, user agents, xml rpc, security log
 Requires at least: 4.7
 Tested up to: 4.9.4
-Stable tag: 6.9.0
+Stable tag: 6.9.1
+Requires PHP: 5.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -187,6 +188,11 @@ Free support may be available with the help of the community in the <a href="htt
 5. Free malware scan powered by Sucuri SiteCheck.
 
 == Changelog ==
+
+= 6.9.1 =
+* Security Fix: Fixed display of unescaped data on logs page. Thanks to Paweł Kuryłowicz from SecuRing for finding and reporting this issue.
+* Enhancement: The logging system now differentiates between WP-CLI commands, WP-Cron scheduled events, and normal page requests.
+* Bug Fix: Fixed the File Change scanner in that it previously could fail to exclude selected directories on some systems.
 
 = 6.9.0 =
 * Enhancement: Updated logging system to keep track of more information and have more options to filter and sort log entries.
@@ -405,5 +411,5 @@ Free support may be available with the help of the community in the <a href="htt
 
 == Upgrade Notice ==
 
-= 6.9.0 =
-Version 6.9.0 contains an improved logging system and bug fixes. It is recommended for all users.
+= 6.9.1 =
+Version 6.9.1 contains an important security bug fix. It is recommended for all users.

@@ -30,6 +30,18 @@ if ( ! function_exists( 'basic_bull_scripts_and_styles' ) ) {
 
 		wp_enqueue_script('tweenmax', get_template_directory_uri() . '/js/lib/tween-max.min.js', array( 'jquery' ), false, true);
 
+		// Include underscore.js library
+
+		wp_enqueue_script('underscore', get_template_directory_uri() . '/js/lib/underscore.min.js', array( 'jquery' ), false, true);
+
+		// Include Moment.js library
+
+		wp_enqueue_script('moment', get_template_directory_uri() . '/js/lib/moment-with-locales.min.js', array( 'jquery' ), false, true);
+
+		// Include clndr.js library
+
+		wp_enqueue_script('clndr', get_template_directory_uri() . '/js/lib/clndr.min.js', array( 'jquery' ), false, true);
+
 		// Include compiled plugins
 
 		wp_enqueue_script('plugin', get_template_directory_uri() . '/js/plugins.js', array( 'jquery' ), false, true);

@@ -1,0 +1,58 @@
+.clndr {
+    float: left;
+    width: 65%;
+    border-right: 2px solid white;
+    .day {
+	    float: left;
+	    width: 14.2857%;
+	    height: 66px;
+	    padding: 24px 0;
+	    text-align: center;
+	    color: #4f4f4f;
+	    background-color: #ebebeb;
+	    border-bottom: 2px solid white;
+	    line-height: 100%;
+	    &.event {
+	    	.day-number {
+	    		position: relative;
+	    		color: white;
+	    		z-index: 2;
+	    		&:after {
+	    			content: "";
+	    			display: block;
+	    			position: absolute;
+	    			width: 40px;
+	    			height: 40px;
+	    			border-radius: 50%;
+	    			top: 50%;
+	    			left: 50%;
+	    			transform: translate(-50%, -50%);
+					z-index: -1;
+					background: gray;
+	    		}
+	    	}
+	    }
+	}
+	.header-day {
+	    float: left;
+	    width: 14.2857%;
+	    padding: 14px;
+	    text-align: center;
+	    color: white;
+	}
+	.days-of-the-week {
+		float: left;
+    	width: 100%;
+    	background-color: #3883a3;
+	}
+	.clndr-controls {
+		text-align: center;
+		padding: 10px;
+		font-weight: bold;
+		text-transform: uppercase;
+		background-color: #ebebeb;
+		> * {
+			display: inline-block;
+		}
+	}
+}

@@ -137,8 +137,8 @@ foreach($resOptions as $resName) {
 	<?php } ?>
 	<script type="text/javascript" src="<?php echo OPANDA_BIZPANDA_URL ?>/assets/admin/js/libs/json2.js"></script>
 	<?php ?>
-	<script type="text/javascript" src="<?php echo OPANDA_BIZPANDA_URL ?>/assets/js/lockers.020301.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="<?php echo OPANDA_BIZPANDA_URL ?>/assets/css/lockers.020301.min.css">
+	<script type="text/javascript" src="<?php echo OPANDA_BIZPANDA_URL ?>/assets/js/lockers.020302.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="<?php echo OPANDA_BIZPANDA_URL ?>/assets/css/lockers.020302.min.css">
 	<?php 
  ?>
 	<?php do_action('onp_sl_preview_head') ?>

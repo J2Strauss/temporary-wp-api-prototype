@@ -27,7 +27,83 @@ $(document).ready(function(){
 	var firstScriptTag = document.getElementsByTagName('script')[0];
 	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-   
+		
+	var clndr = {};
+
+	$( function() {
+
+	  // PARDON ME while I do a little magic to keep these events relevant for the rest of time...
+	  var currentMonth = moment().format('YYYY-MM');
+	  var nextMonth    = moment().add('month', 1).format('YYYY-MM');
+
+	 $.ajax({
+		url: 'http://wordpress.localhost/wp-json/wp/v2/events?filter[meta_key]=event_start_date&filter[orderby]=meta_value_num&order=asc',
+		dataType: 'json',
+		success: function(result) {
+		 	
+		 	var eventObject= "[";
+		 	var number = "";
+		 	$.each(result, function (i, value) {
+		 		number+= i;
+		 		eventObject+= '{',
+		 		eventObject+= 'date: "' + value.acf.event_start_date +'",',
+                eventObject+= 'title: "' + value.title.rendered +'",',
+                eventObject+='startDate: "' + value.acf.event_start_date +'",',
+                eventObject+='endDate: "' + value.acf.event_end_date +'",',
+                eventObject+='startTime: "' + value.acf.event_start_time +'",',
+                eventObject+= 'endTime: "' + value.acf.event_end_time+'"'
+                for(var i=0; i < result.length; i++) {
+					if(i === length-1) {  //The last one
+						eventObject+= '}'
+					} else {
+						eventObject+= '},'
+					} 
+				}
+            });
+            console.log(number);
+            eventObject+= ']';
+            
+            console.log(eventObject);
+            console.log(result);
+
+	    //       var events = [
+			  //   { date: currentMonth + '-' + '10', title: 'Persian Kitten Auction', location: 'Center for Beautiful Cats' },
+			  //   { date: currentMonth + '-' + '19', title: 'Cat Frisbee', location: 'Jefferson Park' },
+			  //   { date: currentMonth + '-' + '23', title: 'Kitten Demonstration', location: 'Center for Beautiful Cats' },
+			  //   { date: nextMonth + '-' + '07',    title: 'Small Cat Photo Session', location: 'Center for Cat Photography' }
+			  // ];
+
+			// var events = $.parseJSON(result); //parse JSON
+
+			// var output="<ul>";
+			// for (var i in events) {
+			// 	output+="<li>" + events[i].id + "</li>";
+			// }
+			// output+="</ul>";
+
+
+			// console.log(output);
+			 clndr = $('#calendar').clndr({
+			    template: $('#calendar-template').html(),
+			    events: result,
+			    forceSixRows: true
+			  });
+		}
+	});
+
+	
+
+	  // $('#clndr-4').clndr({
+	  //   template: $('#clndr-4-template').html(),
+	  //   events: events,
+	  //   lengthOfTime: {
+	  //     days: 7,
+	  //     interval: 7
+	  //   }
+	  // });
+	});
+
+	
 	
 
 	// Barba.Pjax.originalPreventCheck = Barba.Pjax.preventCheck;

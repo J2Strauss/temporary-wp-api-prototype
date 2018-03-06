@@ -15,17 +15,25 @@ get_header(); ?>
 
 		<?php while ( have_posts() ) : the_post(); ?>
 
-			<?php the_title(); ?>
+			<h1><?php the_title(); ?></h1>
+
+			<?php get_template_part( 'template-parts/components/calendar/calendar' );  ?>
 
 			<div class="section">
+
+				<?php if( get_field('copy') ): ?>
+					
+					<?php the_field('copy'); ?>
+
+				<?php endif; ?>
 				
-				<div class="content-component">
+				<!-- <div class="content-component">
 					
 					<h1>This is a section heading and has stuff</h1>
 					<p>The stuff I was talking about in the heading above are the words you are currently reading...Baboozled again.</p>
 
-				</div>
-				
+				</div> -->
+
 				<?php get_template_part( 'template-parts/components/media/video', 'backgrounds' );  ?>
 
 			</div>

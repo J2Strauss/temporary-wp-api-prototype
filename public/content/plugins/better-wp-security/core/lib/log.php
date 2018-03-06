@@ -70,6 +70,16 @@ final class ITSEC_Log {
 	}
 
 	private static function add( $module, $code, $data, $type, $parent_id = 0 ) {
+		if ( defined( 'WP_CLI' ) && WP_CLI ) {
+			$url = 'wp-cli';
+		} else if ( ( is_callable( 'wp_doing_cron' ) && wp_doing_cron() ) || ( defined( 'DOING_CRON' ) && DOING_CRON ) ) {
+			$url = 'wp-cron';
+		} else if ( isset( $_SERVER['HTTP_HOST'], $_SERVER['REQUEST_URI'] ) ) {
+			$url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+		} else {
+			$url = 'unknown';
+		}
+
 		$data = array(
 			'parent_id'      => $parent_id,
 			'module'         => $module,
@@ -80,7 +90,7 @@ final class ITSEC_Log {
 			'init_timestamp' => gmdate( 'Y-m-d H:i:s', ITSEC_Core::get_current_time_gmt() ),
 			'memory_current' => memory_get_usage(),
 			'memory_peak'    => memory_get_peak_usage(),
-			'url'            => ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],
+			'url'            => $url,
 			'blog_id'        => get_current_blog_id(),
 			'user_id'        => get_current_user_id(),
 			'remote_ip'      => ITSEC_Lib::get_ip(),

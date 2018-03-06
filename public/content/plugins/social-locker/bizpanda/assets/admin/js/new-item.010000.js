@@ -1,5 +1,5 @@
 if ( !window.opanda ) window.opanda = {};
-if ( !window.opanda.newItem ) window.bizpanda.newItem = {};
+if ( !window.opanda.newItem ) window.opanda.newItem = {};
 
 (function($){
     
