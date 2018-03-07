@@ -29,13 +29,20 @@
 			$eventEndDate = $post->acf->event_end_date;
 			$eventStartTime = $post->acf->event_start_time;
 			$eventEndTime = $post->acf->event_end_time;
+			$eventTerms = array();
+			$eventTerms = $post->event_category;
+			$eventTerms = implode(' ', $eventTerms);
+			// foreach( $eventTerms as $term ) {
+			// 	echo $term;
+			// };
 
 			$eventsObject .="{
 				start: '".$eventStartDate."',
 				end: '".$eventEndDate."',
 				title: '".$eventTitle."',
 				desc: '".$eventDescription."',
-				time: '".$eventStartTime."'
+				time: '".$eventStartTime."',
+				categories: '".$eventTerms."'
 			},";
 ?>
 
@@ -65,7 +72,12 @@
 		    </div>
 		    <div class="days clndr-clearfix">
 		        <% _.each(days, function(day) { %>
-		        <div class="<%= day.classes %>" id="<%= day.id %>"><span class="day-number"><%= day.day %></span></div>
+		        <div class="<%= day.classes %>" id="<%= day.id %>">
+		        	<span class="day-number"><%= day.day %></span>
+		        	<% if (day.events) {  %>
+		        		<div class="day-event-listing"></div>
+		        	<% } %>
+		        </div>
 		        <% }); %>
 		    </div>
 		</div>
@@ -83,6 +95,7 @@
 		                <% } %>
 		            </span>
 		            <span class="event-item-name"><%= event.title %></span>
+		            <span class="event-item-name"><%= event.location %></span>
 		            <% if (event.time) {  %>
 		                <span class="event-item-time"><%= event.time %></span>
 		            <% } %>

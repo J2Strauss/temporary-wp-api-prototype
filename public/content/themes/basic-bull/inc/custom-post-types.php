@@ -218,6 +218,8 @@ Based off of: https://code.tutsplus.com/articles/custom-post-type-helper-class--
 		]
 	);
 
+	$events->add_taxonomy( 'event_category' );
+
 	$music = new Custom_Post_Type( 'music' ,
 		[
 			'menu_icon' => 'dashicons-format-audio',

@@ -32,128 +32,61 @@ $(document).ready(function(){
 
 	$( function() {
 
-	  // PARDON ME while I do a little magic to keep these events relevant for the rest of time...
-	  var currentMonth = moment().format('YYYY-MM');
-	  var nextMonth    = moment().add('month', 1).format('YYYY-MM');
+		// PARDON ME while I do a little magic to keep these events relevant for the rest of time...
+		var currentMonth = moment().format('YYYY-MM');
+		var nextMonth    = moment().add('month', 1).format('YYYY-MM');
 
-	 $.ajax({
-		url: 'http://wordpress.localhost/wp-json/wp/v2/events?filter[meta_key]=event_start_date&filter[orderby]=meta_value_num&order=asc',
-		dataType: 'json',
-		success: function(result) {
-		 	
-		 	var eventObject= "[";
-		 	var number = "";
-		 	$.each(result, function (i, value) {
-		 		number+= i;
-		 		eventObject+= '{',
-		 		eventObject+= 'date: "' + value.acf.event_start_date +'",',
-                eventObject+= 'title: "' + value.title.rendered +'",',
-                eventObject+='startDate: "' + value.acf.event_start_date +'",',
-                eventObject+='endDate: "' + value.acf.event_end_date +'",',
-                eventObject+='startTime: "' + value.acf.event_start_time +'",',
-                eventObject+= 'endTime: "' + value.acf.event_end_time+'"'
-                for(var i=0; i < result.length; i++) {
-					if(i === length-1) {  //The last one
+	 	$.ajax({
+			url: 'http://wordpress.localhost/wp-json/wp/v2/events?filter[meta_key]=event_start_date&filter[orderby]=meta_value_num&order=asc',
+			dataType: 'json',
+			success: function(result) {
+			 	
+			 	var number = "";
+			 	var eventObject= "";
+			 	eventObject+= "[";
+			 	$.each(result, function (i, value) {
+			 		number = result.length;
+			 		eventObject+= '{',
+			 		eventObject+= '"date": "' + value.acf.event_start_date +'", ',
+	                eventObject+= '"title": "' + value.title.rendered +'", ',
+	                eventObject+= '"startDate": "' + value.acf.event_start_date +'", ',
+	                eventObject+= '"endDate": "' + value.acf.event_end_date +'", ',
+	                eventObject+= '"startTime": "' + value.acf.event_start_time +'", ',
+	                eventObject+= '"endTime": "' + value.acf.event_end_time +'", ',
+	                eventObject+= '"location": "' + value.acf.event_location+'"'
+					if(i == number-1) {  //The last one
 						eventObject+= '}'
 					} else {
 						eventObject+= '},'
 					} 
-				}
-            });
-            console.log(number);
-            eventObject+= ']';
-            
-            console.log(eventObject);
-            console.log(result);
-
-	    //       var events = [
-			  //   { date: currentMonth + '-' + '10', title: 'Persian Kitten Auction', location: 'Center for Beautiful Cats' },
-			  //   { date: currentMonth + '-' + '19', title: 'Cat Frisbee', location: 'Jefferson Park' },
-			  //   { date: currentMonth + '-' + '23', title: 'Kitten Demonstration', location: 'Center for Beautiful Cats' },
-			  //   { date: nextMonth + '-' + '07',    title: 'Small Cat Photo Session', location: 'Center for Cat Photography' }
-			  // ];
-
-			// var events = $.parseJSON(result); //parse JSON
-
-			// var output="<ul>";
-			// for (var i in events) {
-			// 	output+="<li>" + events[i].id + "</li>";
-			// }
-			// output+="</ul>";
-
-
-			// console.log(output);
-			 clndr = $('#calendar').clndr({
-			    template: $('#calendar-template').html(),
-			    events: result,
-			    forceSixRows: true
-			  });
-		}
+	            });
+	            eventObject+=']';
+	            var eventData = $.parseJSON(eventObject);
+	            console.log(eventData);
+				clndr = $('#calendar').clndr({
+					template: $('#calendar-template').html(),
+					events: eventData,
+					forceSixRows: true,
+					clickEvents: {
+					    click: function(target) {
+							// make a <ul>
+							var markup = '<ul>';
+							// loop through the events, making a <div> for each with relevation info
+							for(var i = 0; i < target.events.length; i++) {
+								markup += '<div class="event">' + target.events[i].title + 'at ' + target.events[i].location + '</div>';
+							}
+							// close the </ul>
+							markup += '</ul>';
+							// put your new markup in the events container!
+							$('.day-event-listing').empty();
+							$(event.target).next('.day-event-listing').html( markup );
+						}
+				  	}
+				});
+			}
+		});
+	 
 	});
-
-	
-
-	  // $('#clndr-4').clndr({
-	  //   template: $('#clndr-4-template').html(),
-	  //   events: events,
-	  //   lengthOfTime: {
-	  //     days: 7,
-	  //     interval: 7
-	  //   }
-	  // });
-	});
-
-	
-	
-
-	// Barba.Pjax.originalPreventCheck = Barba.Pjax.preventCheck;
-
-	// Barba.Pjax.preventCheck = function(evt, element) {
-	// 	if (!Barba.Pjax.originalPreventCheck(evt, element)) {
-	// 		return false;
-	// 	}
-
-	// 	// No need to check for element.href -
-	// 	// originalPreventCheck does this for us! (and more!)
-	// 	if (/.pdf/.test(element.href.toLowerCase())) {
-	// 		return false;
-	// 	}
-
-	// 	if (element.classList.contains('caret')){
-	// 		return false;
-	// 	}
-
-	// 	if (element.classList.contains('admin-link')){
-	// 		return false;
-	// 	}
-
-	// 	// if ($('li').hasClass('expandable-menu')){
-	// 	// 	return false;
-	// 	// }
-
-	// 	return true;
-	// };
-	// Barba.Pjax.Dom.wrapperId = 'content';
-	// Barba.Pjax.Dom.containerClass = 'content-container';
-	// Barba.Pjax.start();
-
-
-	// Barba.Dispatcher.on('linkClicked', function() {
- //  		$('body').removeClass('page-loaded').addClass('page-loading');
-	// });
-	// Barba.Dispatcher.on('newPageReady', function(currentStatus, oldStatus, container) {
-
-	// 	setTimeout(function(){
- //  			$('body').removeClass('page-loading').addClass('page-loaded');
-	// 	}, 500);
-
-	// 	// Syntax highlighter on after page load
-	// 	prism();
-
-	// 	// Accordion component
-	// 	accordion();
-
-	// });
 	
 });
 
