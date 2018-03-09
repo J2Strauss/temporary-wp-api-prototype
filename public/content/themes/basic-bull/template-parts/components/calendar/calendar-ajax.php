@@ -11,14 +11,14 @@
 		// require_once('../../../../../wp-load.php'); //remote
 	}
 
-    if(isset($_REQUEST['paged'])){
+    // if(isset($_REQUEST['paged'])){
 
-        $paged = $_REQUEST['paged'];
+    //     $paged = $_REQUEST['paged'];
 
-    } else {
+    // } else {
 
-        $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
-    }
+    //     $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
+    // }
 	
 	$request = wp_remote_get( 'http://wordpress.localhost/wp-json/wp/v2/events?filter[meta_key]=event_start_date&filter[orderby]=meta_value_num&order=asc' );
 	

@@ -1,6 +1,6 @@
 .clndr {
     float: left;
-    width: 65%;
+    width: 80%;
     border-right: 2px solid white;
     .day {
 	    float: left;
@@ -13,6 +13,15 @@
 	    border-bottom: 2px solid white;
 	    line-height: 100%;
         position: relative;
+        &.today {
+        	background: white;
+        }
+        &.adjacent-month {
+        	background: #c5c5c5;
+        	.day-number {
+        		opacity: .4;
+        	}
+        }
 	    &.event {
 	    	.day-number {
 	    		position: relative;
@@ -74,4 +83,43 @@
     		margin: 10px 0 10px;
 		}
     }
+}
+.event-listing-group {
+    position: relative;
+    padding: 0 0 0 80px;
+    border-bottom: 2px solid red;
+    float: left;
+    width: 100%;
+}
+.event-listing {
+	padding: 10px 20px 20px;
+	color: black;
+    float: left;
+    width: 100%;
+    border-bottom: 1px solid gray;
+    &:last-child {
+    	border-bottom: none;
+    }
+}
+.event-group-date {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 80px;
+    background: gray;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    display: block;
+    &:before,
+    &:after {
+    	display: block;
+    }
+    &:before {
+		content: attr(data-day);
+	}
+	&:after {
+		content: attr(data-month);
+	}
 }

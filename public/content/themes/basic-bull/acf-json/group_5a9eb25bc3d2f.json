@@ -4,9 +4,9 @@
     "fields": [
         {
             "key": "field_5a9eb265b3cda",
-            "label": "Event Description",
-            "name": "event_description",
-            "type": "wysiwyg",
+            "label": "Event Excerpt",
+            "name": "event_excerpt",
+            "type": "textarea",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -16,10 +16,10 @@
                 "id": ""
             },
             "default_value": "",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 1,
-            "delay": 0
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 4,
+            "new_lines": ""
         },
         {
             "key": "field_5a9eb272b3cdb",
@@ -126,7 +126,7 @@
             },
             "taxonomy": "event_category",
             "field_type": "select",
-            "allow_null": 0,
+            "allow_null": 1,
             "add_term": 1,
             "save_terms": 1,
             "load_terms": 1,
@@ -148,7 +148,7 @@
             },
             "taxonomy": "post_tag",
             "field_type": "checkbox",
-            "allow_null": 0,
+            "allow_null": 1,
             "add_term": 1,
             "save_terms": 1,
             "load_terms": 1,
@@ -159,6 +159,100 @@
             "key": "field_5aa03e2b1a383",
             "label": "Event Location",
             "name": "event_location",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5aa17ee5ec9e7",
+            "label": "Event Map",
+            "name": "event_map",
+            "type": "google_map",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "center_lat": "39.9525840",
+            "center_lng": "-75.1652220",
+            "zoom": "",
+            "height": ""
+        },
+        {
+            "key": "field_5aa17e75ec9e3",
+            "label": "Event Street Address",
+            "name": "event_street_address",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5aa17e93ec9e4",
+            "label": "Event City",
+            "name": "event_city",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5aa17ebfec9e6",
+            "label": "Event State",
+            "name": "event_state",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5aa17eb2ec9e5",
+            "label": "Event Zip Code",
+            "name": "event_zip_code",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -196,5 +290,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1520451122
+    "modified": 1520540305
 }

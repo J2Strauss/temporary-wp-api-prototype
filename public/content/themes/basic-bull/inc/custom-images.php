@@ -30,12 +30,12 @@ if ( ! function_exists( 'basic_bull_images' ) ) {
 		// Create custom sizes
 		// ==================================
 
-		add_image_size( 'thumbnail-horizontal', 380, 270, true ); // 380 pixels wide by 270 pixels tall, soft proportional crop mode
-		add_image_size( 'thumbnail-vertical', 545, 99999 ); // 545 pixels wide by unlimited pixels tall, soft proportional crop mode
-		add_image_size( 'medium-horizontal', 530, 390, true ); // 530 pixels wide by 390 pixels tall, hard proportional crop mode
-		add_image_size( 'medium-square', 650, 650, true ); // 650 pixels wide by 650 pixels tall, hard proportional crop mode
-		add_image_size( 'large-horizontal', 960, 535, true ); // 960 pixels wide by 420 pixels tall, hard proportional crop mode
-		add_image_size( 'wide-strip', 1280, 320, true ); // 1280 pixels wide by 320 pixels tall, hard proportional crop mode
+		add_image_size( 'thumbnail_horizontal', 380, 270, true ); // 380 pixels wide by 270 pixels tall, soft proportional crop mode
+		add_image_size( 'thumbnail_vertical', 545, 99999 ); // 545 pixels wide by unlimited pixels tall, soft proportional crop mode
+		add_image_size( 'medium_horizontal', 530, 390, true ); // 530 pixels wide by 390 pixels tall, hard proportional crop mode
+		add_image_size( 'medium_square', 650, 650, true ); // 650 pixels wide by 650 pixels tall, hard proportional crop mode
+		add_image_size( 'large_horizontal', 960, 535, true ); // 960 pixels wide by 420 pixels tall, hard proportional crop mode
+		add_image_size( 'wide_strip', 1280, 320, true ); // 1280 pixels wide by 320 pixels tall, hard proportional crop mode
 
 
 		// Add custom image sizes in the add media window
@@ -43,11 +43,11 @@ if ( ! function_exists( 'basic_bull_images' ) ) {
 
 		function custom_size_options( $sizes ) {
 		return array_merge( $sizes, array(
-			'thumbnail-horizontal' => __('Horizontal Thumbnail'),
-			'thumbnail-vertical' => __('Vertical Thumbnail (Proportioal Height)'),
-			'medium-horizontal' => __('Horizontal Medium'),
-			'medium-square' => __('Square Medium'),
-			'large-horizontal' => __('Horizontal Large'),
+			'thumbnail_horizontal' => __('Horizontal Thumbnail'),
+			'thumbnail_vertical' => __('Vertical Thumbnail (Proportioal Height)'),
+			'medium_horizontal' => __('Horizontal Medium'),
+			'medium_square' => __('Square Medium'),
+			'large_horizontal' => __('Horizontal Large'),
 		) );
 		}
 

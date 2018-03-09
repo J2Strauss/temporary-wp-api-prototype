@@ -84,13 +84,15 @@ if ( ! function_exists( 'basic_bull_acf_functions' ) ) {
 		                // set it to a text field(s)
 
 		                // street address
-		                $(".acf-field-59a585dfa00e9 input").val(locationAddress);
+		                $("#acf-field_5aa17e75ec9e3").val(locationAddress);
 		                // city
-		                $(".acf-field-59a5864ba00eb input").val(locationCity);
+		                $("#acf-field_5aa17e93ec9e4").val(locationCity);
 		                // state
-		                $(".acf-field-59a58652a00ec input").val(locationState);
+		                $("#acf-field_5aa17ebfec9e6").val(locationState);
 		                // zip
-	                	$(".acf-field-59a58659a00ed input").val(locationZip);
+	                	$("#acf-field_5aa17eb2ec9e5").val(locationZip);
+
+	                	console.log('ok');
 				    
 					});
 		                    

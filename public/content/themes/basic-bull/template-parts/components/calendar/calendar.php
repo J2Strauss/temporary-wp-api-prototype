@@ -20,18 +20,35 @@
 
 
 	if( ! empty( $data ) ) :
+
+		$eventTitle = "";
+		$eventExcerpt = "";
+		$eventStartDate = "";
+		$eventEndDate = "";
+		$eventStartTime = "";
+		$eventEndTime = "";
+		$eventLocation = "";
+		$eventCategory = "";
+		$eventCategoryName = "";
+		$eventCategorySlug = "";
 		
 		foreach( $data as $post ) : 
 
 			$eventTitle = $post->title->rendered;
-			$eventDescription = $post->acf->event_description;
+			$eventExcerpt = $post->acf->event_excerpt;
 			$eventStartDate = $post->acf->event_start_date;
 			$eventEndDate = $post->acf->event_end_date;
 			$eventStartTime = $post->acf->event_start_time;
 			$eventEndTime = $post->acf->event_end_time;
-			$eventTerms = array();
-			$eventTerms = $post->event_category;
-			$eventTerms = implode(' ', $eventTerms);
+			$eventLocation = $post->acf->event_location;
+			$eventCategory = $post->acf->event_category;
+			if ( $eventCategory != false ) { 
+				$eventCategoryName = $post->acf->event_category->name;
+				$eventCategorySlug = $post->acf->event_category->slug;
+			} 
+			// $eventTerms = array();
+			// $eventTerms = $post->event_category;
+			// $eventTerms = implode(' ', $eventTerms);
 			// foreach( $eventTerms as $term ) {
 			// 	echo $term;
 			// };
@@ -40,9 +57,11 @@
 				start: '".$eventStartDate."',
 				end: '".$eventEndDate."',
 				title: '".$eventTitle."',
-				desc: '".$eventDescription."',
+				desc: '".$eventExcerpt."',
 				time: '".$eventStartTime."',
-				categories: '".$eventTerms."'
+				location: '".$eventLocation."',
+				categoryName: '".$eventCategoryName."',
+				categorySlug: '".$eventCategorySlug."'
 			},";
 ?>
 
@@ -50,7 +69,7 @@
 
 	<?php $eventsObject = "[ " . strip_tags(rtrim($eventsObject), ",") . " ]"; ?>
 
-	<?php print_r($eventsObject); ?>
+	<?php // print_r($eventsObject); ?>
 
 <?php endif; ?>
 
@@ -81,29 +100,116 @@
 		        <% }); %>
 		    </div>
 		</div>
-		<div class="event-listing">
-		    <div class="event-listing-title">Events</div>
+		<div class="event-listings-container">
+		    
+		    <div class="event-listings-title">Events</div>
 
-		    <% _.each(eventsThisMonth, function(event) { %>
-		        <% if (event.url) {  %><a target="<%= event.url_target %>" href="<%= event.url %>" <% } else {  %><div <% }  %> class="event-item clndr-clearfix">
-		            <span class="event-item-date">
+		    <% _.each(eventsThisMonth, function(event) { %>	
+		        
+		        <% if (event.link) {  %><a target="<%= event.url_target %>" href="<%= event.link %>" <% } else {  %><div <% }  %> class="event-listing clndr-clearfix" data-date="<%= event.startDate %>" data-day="<%= event.startDate %>">
+
+		        	 <% if (event.imageThumbnail) { %>
+		            	
+		            	<div class="event-detail-image">
+		            		<img src="<%= event.imageThumbnail %>" alt="">
+		            	</div>
+
+		            <%  } %>
+					
+					<div class="event-detail-date-time">
+
+		            	<span>Event Date:
+
 		                <% if (event.startDate != event.start) {  %>
-		                	<%= moment(event.startDate).format("D MMMM") %>
+
+		                	<%= moment(event.startDate).format("MMMM D, Y") %>
+
 		                <% } %>
-		                <% if (event.end != event.start) {  %>
-		                     – <%= moment(event.end).format("D MMMM") %>
+
+		              	<% if ( !_.isEmpty(event.endDate) ) { %>
+
+			                <% if (event.endDate != event.startDate) {  %>
+
+			                     – <%= moment(event.endDate).format("MMMM D, Y") %>
+
+			                <% } %>
+
 		                <% } %>
-		            </span>
-		            <span class="event-item-name"><%= event.title %></span>
-		            <span class="event-item-name"><%= event.location %></span>
-		            <% if (event.time) {  %>
-		                <span class="event-item-time"><%= event.time %></span>
+
+		                </span>
+
+		             	<% if (event.startTime) {  %>
+
+		                	<span> | Event Time:
+
+		                	<%= event.startTime %>
+
+		                	<% if (event.endTime) {  %>
+
+			                	<% if ( !_.isEqual(event.endTime , event.startTime) ) {  %>
+
+				                     – <%= event.endTime %>
+
+				                <% } %>
+		                		
+							<% } %>
+
+							</span>
+
+			            <% } %>
+
+		            </div>
+
+		            <div class="event-detail-title"><h3>Event Title: <%= event.title %></h3></div>
+
+		            <% if (event.location) { %>
+		            	
+		            	<div class="event-detail-location">Event Location: <%= event.location %></div>
+
+		            <%  } %>
+
+		            <% if (event.eventExcerpt) {  %>
+		                
+		                <div class="event-detail-excerpt">Event Excerpt: <%= event.excerpt %></div>
+
 		            <% } %>
-		            <% if (event.desc) {  %>
-		                <span class="event-item-desc"><%= event.desc %></span>
-		            <% } %>
-		        <% if (event.url) {  %></a><% } else {  %></div><% }  %>
+
+		            <% if (event.streetAddress) { %>
+		            	
+		            	<div class="event-detail-address">Event Address: <%= event.streetAddress %></div>
+
+		            <%  } %>
+
+		            <% if (event.city) { %>
+		            	
+		            	<div class="event-detail-address">Event City: <%= event.city %></div>
+
+		            <%  } %>
+
+		            <% if (event.zipCode) { %>
+		            	
+		            	<div class="event-detail-address">Event Zip Code: <%= event.zipCode %></div>
+
+		            <%  } %>
+
+		            <% if (!_.contains(['undefined'], event.categoryName)) { %>
+		            	
+		            	<div class="event-detail-category-name">Event Category Name: <%= event.categoryName %></div>
+
+		            <%  } %>
+
+		            <% if (!_.contains(['undefined'], event.categorySlug)) { %>
+		            	
+		            	<div class="event-detail-category-slug">Event Category Slug: <%= event.categorySlug %></div>
+
+		            <%  } %>
+
+		        <% if (event.link) {  %></a><% } else {  %></div><% }  %>
+
+		        <br>
+
 		    <% }); %>
+
 		</div>
 
 	</script>
