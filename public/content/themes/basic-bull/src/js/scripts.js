@@ -27,22 +27,137 @@ $(document).ready(function(){
 	var firstScriptTag = document.getElementsByTagName('script')[0];
 	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
+	
+
 	// Fire clndr.js if element exists
     if ( $('#calendar').length ) {
 
-		var clndr = {};
+    	var clndr = {};
+		var currentMonth = moment().format('YYYY-MM');
+		var nextMonth    = moment().add('month', 1).format('YYYY-MM');
+		var $eventsContainer = $('#events-container');
 
-		$( function() {
+    	calenderFunction();
 
-			// PARDON ME while I do a little magic to keep these events relevant for the rest of time...
-			var currentMonth = moment().format('YYYY-MM');
-			var nextMonth    = moment().add('month', 1).format('YYYY-MM');
+    	$('.event-filter').on('click', function(e){
 
-		 	$.ajax({
-				url: 'http://wordpress.localhost/wp-json/wp/v2/events?filter[meta_key]=event_start_date&filter[orderby]=meta_value_num&order=asc',
+    		e.preventDefault();
+
+    		$eventsContainer.addClass('loading-events');
+
+    		if ( !$(this).hasClass('reset-events') ) {
+
+    			$filterCategory = '&filter['+$(this).data('type')+']';
+		   		$categorySlug = '='+$(this).data('category-slug');
+
+    		} else {
+
+    			$filterCategory = "";
+				$categorySlug = "";
+
+    		};
+    		
+    		$.ajax({
+				url: 'http://wordpress.localhost/wp-json/wp/v2/events?filter[meta_key]=event_start_date&filter[orderby]=meta_value_num&order=asc'+$filterCategory+$categorySlug,
 				dataType: 'json',
 				success: function(result) {
 				 	
+					// Events object
+				 	var number = "";
+				 	var eventObject= "";
+				 	eventObject+= "[";
+				 	
+				 	$.each(result, function (i, value) {
+				 		
+				 		// Total number of events to determine last one
+				 		number = result.length;
+
+				 		// If post does not have image
+				 		if (value.acf.event_image == false) {
+				 			eventImageThumbnail = "";
+				 			eventImageLarge = "";
+				 		} else {
+				 			if (value.acf.event_image.mime_type == "image/gif") {
+				 				eventImageThumbnail = value.acf.event_image.url;
+				 				eventImageLarge = value.acf.event_image.url;
+				 			} else {
+				 				eventImageThumbnail = value.acf.event_image["sizes"]["thumbnail_horizontal"];
+				 				eventImageLarge = value.acf.event_image["sizes"]["large_horizontal"];	
+				 			}
+				 		}
+
+				 		eventObject+= '{',
+				 		eventObject+= '"date": "' + value.acf.event_start_date +'", ',
+				        eventObject+= '"title": "' + value.title.rendered +'", ',
+				        eventObject+= '"excerpt": "' + value.acf.event_excerpt +'", ',
+				        eventObject+= '"imageUrl": "' + value.acf.event_image.url +'", ',
+				        eventObject+= '"imageThumbnail": "' + eventImageThumbnail +'", ',
+				        eventObject+= '"imageLarge": "' + eventImageLarge +'", ',
+				        eventObject+= '"imageAlt": "' + value.acf.event_image.alt +'", ',
+				        eventObject+= '"startDate": "' + value.acf.event_start_date +'", ',
+				        eventObject+= '"endDate": "' + value.acf.event_end_date +'", ',
+				        eventObject+= '"startTime": "' + value.acf.event_start_time +'", ',
+				        eventObject+= '"endTime": "' + value.acf.event_end_time +'", ',
+				        eventObject+= '"location": "' + value.acf.event_location +'", ',
+				        eventObject+= '"streetAddress": "' + value.acf.event_street_address +'", ',
+				        eventObject+= '"city": "' + value.acf.event_city +'", ',
+				        eventObject+= '"state": "' + value.acf.event_state +'", ',
+				        eventObject+= '"zipCode": "' + value.acf.event_zip_code +'", ',
+				        eventObject+= '"categoryName": "' + value.acf.event_category.name +'", ',
+				        eventObject+= '"categorySlug": "' + value.acf.event_category.slug +'", ',
+				        eventObject+= '"link": "' + value.link+'"'
+						if(i == number-1) {  //The last one
+							eventObject+= '}'
+						} else {
+							eventObject+= '},'
+						} 
+				    });
+
+				    eventObject+=']';
+
+				    var eventData = $.parseJSON(eventObject);
+
+				    clndr.setEvents(eventData);
+
+				    setTimeout(function(){
+  						
+  						$eventsContainer.removeClass('loading-events');
+
+					}, 1000);
+
+				}
+			});
+
+    	});
+
+		
+
+		
+
+	 	function calenderFunction(options) {
+
+	 		$eventsContainer.addClass('loading-events');
+
+	 		// Default filter parameters settings for the url
+	 		var $filterCategory = "",
+	 			$categorySlug = "",
+				filter = $.extend({
+		    		filterCategory : '',
+		    		categorySlug : ''
+		    	}, options );
+
+		    if ( filter.filterCategory != undefined && filter.categorySlug != undefined) {
+
+		    	$filterCategory = '&filter['+filter.filterCategory+']';
+		    	$categorySlug = '='+filter.categorySlug;
+
+		    } 
+
+		 	$.ajax({
+				url: 'http://wordpress.localhost/wp-json/wp/v2/events?filter[meta_key]=event_start_date&filter[orderby]=meta_value_num&order=asc'+$filterCategory+$categorySlug,
+				dataType: 'json',
+				success: function(result) {
+
 					// Events object
 				 	var number = "";
 				 	var eventObject= "";
@@ -95,7 +210,9 @@ $(document).ready(function(){
 		            });
 
 		            eventObject+=']';
+
 		            var eventData = $.parseJSON(eventObject);
+
 		            console.log(eventData);
 
 					clndr = $('#calendar').clndr({
@@ -153,13 +270,63 @@ $(document).ready(function(){
 								var $dayNumber = moment(date).format('D');
 							  	$eventListings.filter('[data-date='+ date +']').wrapAll('<div class="event-listing-group"></div>').first().before('<div class="event-group-date" data-day="' + $dayName + '"  data-month="' + $month + '">' + $dayNumber + '</div>');
 							}
+
+							// Events text filter
+							var $eventsFilterItem = $('.event-listing');
+
+							$('#events-filter').keyup(debounce(function() {
+
+								var val = '^(?=.*\\b' + $.trim($(this).val()).split(/\s+/).join('\\b)(?=.*\\b') + ').*$',
+									reg = RegExp(val, 'i'),
+									text;
+
+								$eventsFilterItem.show().filter(function() {
+									text = $(this).text().replace(/\s+/g, ' ');
+									return !reg.test(text);
+								}).hide();
+
+								// Hide group if there aren't any events in this day
+								$('.event-listing-group').each( function() {
+									$(this).show();
+									if($(this).children('.event-listing:visible').length < 1 ){
+										$(this).hide();
+									} 
+
+								});
+
+							}, 300));
+
+							function debounce(func, wait, immediate) {
+								var timeout;
+								return function() {
+									var context = this,
+									args = arguments;
+									var later = function() {
+										timeout = null;
+										if (!immediate) func.apply(context, args);
+									};
+									var callNow = immediate && !timeout;
+									clearTimeout(timeout);
+									timeout = setTimeout(later, wait);
+									if (callNow) func.apply(context, args);
+								};
+							};
+
 						}
+
 					});
-					// console.log(clndr);
+					
+					setTimeout(function(){
+  						
+  						$eventsContainer.removeClass('loading-events');
+
+					}, 1000);
+
 				}
+
 			});
-		 
-		});
+
+		}			
 	
 	}
 	

@@ -8,14 +8,12 @@ body {
 
 /* Site outer container */
 .site-content {
-    padding: 125px 25px 25px 25px;
+    padding: 125px 50px 25px 50px;
     margin: 0 auto;
     float: right;
     opacity: 1;
-    width: calc(100vw - 75px);
     @include breakFirst(large) {
-        padding: 175px 25px 25px 25px;
-        width: calc(100vw - 300px);
+        padding: 175px 50px 25px 50px;
         transition: transform 0.5s $cbTrans;
     }
     .closed-navigation & {

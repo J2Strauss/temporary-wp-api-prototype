@@ -1,7 +1,16 @@
+#events-container {
+	float: left;
+	width: 100%;
+}
 .clndr {
     float: left;
     width: 80%;
     border-right: 2px solid white;
+    opacity: 1;
+	transition: .4s ease all;
+	.loading-events & {
+		opacity: 0;
+	}
     .day {
 	    float: left;
 	    width: 14.2857%;
@@ -13,6 +22,21 @@
 	    border-bottom: 2px solid white;
 	    line-height: 100%;
         position: relative;
+        .day-number {
+        	&:after {
+    			content: "";
+    			display: block;
+    			position: absolute;
+    			width: 40px;
+    			height: 40px;
+    			border-radius: 50%;
+    			top: 50%;
+    			left: 50%;
+    			transform: translate(-50%, -50%);
+				z-index: -1;
+        		transition: .4s ease all;
+        	}
+        }
         &.today {
         	background: white;
         }
@@ -29,16 +53,6 @@
 	    		z-index: 2;
 	    		cursor: pointer;
 	    		&:after {
-	    			content: "";
-	    			display: block;
-	    			position: absolute;
-	    			width: 40px;
-	    			height: 40px;
-	    			border-radius: 50%;
-	    			top: 50%;
-	    			left: 50%;
-	    			transform: translate(-50%, -50%);
-					z-index: -1;
 					background: gray;
 	    		}
 	    	}
@@ -121,5 +135,68 @@
 	}
 	&:after {
 		content: attr(data-month);
+	}
+}
+.brand-loader {
+	width: 100px;
+	height: 100px;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(1);
+	z-index: 1000;
+	transition: .4s ease all;
+	opacity: 0;
+	.loading-events & {
+		opacity: 1;
+		transform: translate(-50%, -50%) scale(1);
+		.stroke {
+			animation: dash linear 1s infinite alternate running;
+		}
+	}
+	svg {
+		width: 100%;
+		height: auto;
+		float: left;
+	}
+	.stroke {
+		fill:none; 
+		stroke:#ff5a5f; 
+		stroke-width:10; 
+		stroke-linecap:round; 
+		stroke-linejoin:round; 
+		stroke-miterlimit:10;
+		stroke-dasharray: 700;
+		stroke-dashoffset: 700;
+		animation: dash linear 1s infinite paused;
+	}
+
+	@keyframes dash {
+		to {
+			stroke-dashoffset: 0;
+		}
+		/*0% {
+			stroke-dashoffset: 680;
+		}
+		50% {
+			stroke-dashoffset: 0;
+		}
+		100% {
+			stroke-dashoffset: -680;
+		}*/
+		  /*from {
+		   stroke-dashoffset: 680;
+		  }
+		  
+		  to {
+		    stroke-dasharray: 1360 1360;
+		    stroke-dashoffset: 0;
+		  }*/
+		/*from {
+			stroke-dashoffset: 1000;
+		}
+		to {
+			stroke-dashoffset: 0;
+		}*/
 	}
 }
